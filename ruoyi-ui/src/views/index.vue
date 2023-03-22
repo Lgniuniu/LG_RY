@@ -77,43 +77,43 @@
     </el-row>
     <el-divider />
     <el-row :gutter="20">
-      <el-col :xs="24" :sm="24" :md="12" :lg="8">
-        <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>联系信息</span>
-          </div>
-          <div class="body">
-            <p>
-              <i class="el-icon-s-promotion"></i> 官网：<el-link
-                href="http://www.ruoyi.vip"
-                target="_blank"
-                >http://www.ruoyi.vip</el-link
-              >
-            </p>
-            <p>
-              <i class="el-icon-user-solid"></i> QQ群：<s>满937441</s> <s>满887144332</s>
-              <s>满180251782</s> <s>满104180207</s> <s>满186866453</s> <s>满201396349</s>
-              <s>满101456076</s> <s>满101539465</s> <s>满264312783</s> <s>满167385320</s>
-              <s>满104748341</s> <s>满160110482</s> <s>满170801498</s> <a href="https://jq.qq.com/?_wv=1027&k=eCx8eyoJ" target="_blank">
-                108482800</a
-              >
-            </p>
-            <p>
-              <i class="el-icon-chat-dot-round"></i> 微信：<a
-                href="javascript:;"
-                >/ *若依</a
-              >
-            </p>
-            <p>
-              <i class="el-icon-money"></i> 支付宝：<a
-                href="javascript:;"
-                class="支付宝信息"
-                >/ *若依</a
-              >
-            </p>
-          </div>
-        </el-card>
-      </el-col>
+      <!--<el-col :xs="24" :sm="24" :md="12" :lg="8">-->
+        <!--<el-card class="update-log">-->
+          <!--<div slot="header" class="clearfix">-->
+            <!--<span>联系信息</span>-->
+          <!--</div>-->
+          <!--<div class="body">-->
+            <!--<p>-->
+              <!--<i class="el-icon-s-promotion"></i> 官网：<el-link-->
+                <!--href="http://www.ruoyi.vip"-->
+                <!--target="_blank"-->
+                <!--&gt;http://www.ruoyi.vip</el-link-->
+              <!--&gt;-->
+            <!--</p>-->
+            <!--<p>-->
+              <!--<i class="el-icon-user-solid"></i> QQ群：<s>满937441</s> <s>满887144332</s>-->
+              <!--<s>满180251782</s> <s>满104180207</s> <s>满186866453</s> <s>满201396349</s>-->
+              <!--<s>满101456076</s> <s>满101539465</s> <s>满264312783</s> <s>满167385320</s>-->
+              <!--<s>满104748341</s> <s>满160110482</s> <s>满170801498</s> <a href="https://jq.qq.com/?_wv=1027&k=eCx8eyoJ" target="_blank">-->
+                <!--108482800</a-->
+              <!--&gt;-->
+            <!--</p>-->
+            <!--<p>-->
+              <!--<i class="el-icon-chat-dot-round"></i> 微信：<a-->
+                <!--href="javascript:;"-->
+                <!--&gt;/ *若依</a-->
+              <!--&gt;-->
+            <!--</p>-->
+            <!--<p>-->
+              <!--<i class="el-icon-money"></i> 支付宝：<a-->
+                <!--href="javascript:;"-->
+                <!--class="支付宝信息"-->
+                <!--&gt;/ *若依</a-->
+              <!--&gt;-->
+            <!--</p>-->
+          <!--</div>-->
+        <!--</el-card>-->
+      <!--</el-col>-->
 
     </el-row>
   </div>
