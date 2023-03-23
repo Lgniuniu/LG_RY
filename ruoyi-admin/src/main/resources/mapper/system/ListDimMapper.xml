@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ListDimMapper">
+    
+    <resultMap type="ListDim" id="ListDimResult">
+        <result property="dim"    column="dim"    />
+        <result property="dimName"    column="dim_name"    />
+        <result property="createdBy"    column="created_by"    />
+        <result property="createdTime"    column="created_time"    />
+        <result property="updatedBy"    column="updated_by"    />
+        <result property="updatedTime"    column="updated_time"    />
+    </resultMap>
+
+    <sql id="selectListDimVo">
+        select dim, dim_name, created_by, created_time, updated_by, updated_time from list_dim
+    </sql>
+
+    <select id="selectListDimList" parameterType="ListDim" resultMap="ListDimResult">
+        <include refid="selectListDimVo"/>
+        <where>  
+            <if test="dim != null  and dim != ''"> and dim = #{dim}</if>
+            <if test="dimName != null  and dimName != ''"> and dim_name like concat('%', #{dimName}, '%')</if>
+            <if test="createdBy != null  and createdBy != ''"> and created_by like concat('%', #{createdBy}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectListDimByDim" parameterType="String" resultMap="ListDimResult">
+        <include refid="selectListDimVo"/>
+        where dim = #{dim}
+    </select>
+        
+    <insert id="insertListDim" parameterType="ListDim">
+        insert into list_dim
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="dim != null">dim,</if>
+            <if test="dimName != null">dim_name,</if>
+            <if test="createdBy != null">created_by,</if>
+            <if test="createdTime != null">created_time,</if>
+            <if test="updatedBy != null">updated_by,</if>
+            <if test="updatedTime != null">updated_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="dim != null">#{dim},</if>
+            <if test="dimName != null">#{dimName},</if>
+            <if test="createdBy != null">#{createdBy},</if>
+            <if test="createdTime != null">#{createdTime},</if>
+            <if test="updatedBy != null">#{updatedBy},</if>
+            <if test="updatedTime != null">#{updatedTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateListDim" parameterType="ListDim">
+        update list_dim
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="dimName != null">dim_name = #{dimName},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdTime != null">created_time = #{createdTime},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="updatedTime != null">updated_time = #{updatedTime},</if>
+        </trim>
+        where dim = #{dim}
+    </update>
+
+    <delete id="deleteListDimByDim" parameterType="String">
+        delete from list_dim where dim = #{dim}
+    </delete>
+
+    <delete id="deleteListDimByDims" parameterType="String">
+        delete from list_dim where dim in 
+        <foreach item="dim" collection="array" open="(" separator="," close=")">
+            #{dim}
+        </foreach>
+    </delete>
+</mapper>
