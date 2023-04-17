@@ -1,5 +1,5 @@
 <template>
-  <iframe id="reportFrame" src="https://zjsibftest.zjky.cn:30010//webroot/decision/view/report?viewlet=ibf%25E4%25B8%259A%25E8%25B4%25A2%25E4%25B8%2580%25E4%25BD%2593%252Fdev%252Fsys%252Fsys%252Fpc%252Fxkxsztz.cpt&amp;refreshIframeParam=1681463661878&amp;year=2023&amp;display=pc&amp;op=write" style="width: 95vw; height: 90vh;"></iframe>
+  <iframe id="reportFrame" src="http://120.77.76.208/webroot/decision/view/report?viewlet=doc%252FForm%252F%25E5%259C%25A8%25E7%25BA%25BF%25E5%25AF%25BC%25E5%2585%25A5Excel.cpt&ref_t=design&op=write&ref_c=3ce44eb7-8e58-4654-bc0d-909f1932af87" style="width: 95vw; height: 90vh;"></iframe>
 </template>
 
 <script>

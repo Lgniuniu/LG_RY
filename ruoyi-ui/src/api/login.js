@@ -8,6 +8,11 @@ export function login(username, password, code, uuid) {
     code,
     uuid
   }
+  request({
+      url: 'http://120.77.76.208/fine/login/cross/domain',
+      method: 'get',
+      data: { validity: '-1', fine_username: 'root', fine_password: 'lg807050' } // 指定第二个请求的参数
+    })
   return request({
     url: '/login',
     headers: {
