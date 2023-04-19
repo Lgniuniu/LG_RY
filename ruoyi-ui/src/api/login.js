@@ -11,7 +11,6 @@ export function login(username, password, code, uuid) {
   request({
       url: 'http://120.77.76.208/webroot/decision/login/cross/domain?fine_username=root&fine_password=wrvY7quMcv5gS1ywv6ayFA%3D%3D&encrypted=true&validity=-1',
       method: 'get',
-      //data: { validity: '-1', fine_username: 'root', fine_password: 'lg807050' } // 指定第二个请求的参数
     })
   return request({
     url: '/login',

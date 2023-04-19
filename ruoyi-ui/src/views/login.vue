@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { getCodeImg } from "@/api/login";
+import { getCodeImg ,ssl} from "@/api/login";
 import Cookies from "js-cookie";
 import { encrypt, decrypt } from '@/utils/jsencrypt'
 
@@ -140,8 +140,8 @@ export default {
             Cookies.remove("password");
             Cookies.remove('rememberMe');
           }
-          this.$store.dispatch("Login", this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
+          this.$store.dispatch("Login", this.loginForm).then(() => {				  
+			this.$router.push({ path: this.redirect || "/" }).catch(()=>{});	
           }).catch(() => {
             this.loading = false;
             if (this.captchaEnabled) {

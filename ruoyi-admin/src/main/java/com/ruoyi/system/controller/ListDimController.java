@@ -2,16 +2,13 @@ package com.ruoyi.system.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.common.utils.StringUtils;
+import com.ruoyi.system.domain.FineReportManage;
+import com.ruoyi.system.service.IFineReportManageService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -33,6 +30,32 @@ public class ListDimController extends BaseController
 {
     @Autowired
     private IListDimService listDimService;
+
+
+    @Autowired
+    private IFineReportManageService fineReportManageService;
+    /**
+     * 查询维度列表列表
+     */
+    @PreAuthorize("@ss.hasPermi('system:dim:list')")
+    @GetMapping("/url")
+    public AjaxResult url(@RequestParam("id") long id)
+    {
+//        long fineId=Long.parseLong(id);
+//        System.out.println("----------------"+fineId);
+        String url = "/fine/view/report?f_t=design&ref_c=3ce44eb7-8e58-4654-bc0d-909f1932af87&viewlet=";
+        FineReportManage fineReportManage = fineReportManageService.selectFineReportManageById(id);
+        String fineReportUrl = fineReportManage.getFineReportUrl();
+        String fineReportName = fineReportManage.getFineReportName()+".cpt";
+        String fineReportOp = "&op="+fineReportManage.getFineReportOp();
+        if (StringUtils.isEmpty(fineReportUrl)){
+            url=url+fineReportName+fineReportOp;
+        }else {
+            url=url+fineReportUrl+"/"+fineReportName+fineReportOp;
+        }
+        return success(url);
+    }
+
 
     /**
      * 查询维度列表列表
