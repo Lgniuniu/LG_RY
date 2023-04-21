@@ -3,6 +3,8 @@ package com.ruoyi.system.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ruoyi.common.core.domain.entity.SysUser;
+import com.ruoyi.common.utils.SecurityUtils;
 import com.ruoyi.common.utils.StringUtils;
 import com.ruoyi.system.domain.FineReportManage;
 import com.ruoyi.system.service.IFineReportManageService;
@@ -31,18 +33,17 @@ public class ListDimController extends BaseController
     @Autowired
     private IListDimService listDimService;
 
-
     @Autowired
     private IFineReportManageService fineReportManageService;
     /**
-     * 查询维度列表列表
+     * 设置iframe地址
      */
-    @PreAuthorize("@ss.hasPermi('system:dim:list')")
+//    @PreAuthorize("@ss.hasPermi('system:dim:list')")
     @GetMapping("/url")
     public AjaxResult url(@RequestParam("id") long id)
     {
-//        long fineId=Long.parseLong(id);
-//        System.out.println("----------------"+fineId);
+        SysUser user = SecurityUtils.getLoginUser().getUser();
+        String userId = "&fineid="+ Long.toString(user.getUserId());
         String url = "/fine/view/report?f_t=design&ref_c=3ce44eb7-8e58-4654-bc0d-909f1932af87&viewlet=";
         FineReportManage fineReportManage = fineReportManageService.selectFineReportManageById(id);
         String fineReportUrl = fineReportManage.getFineReportUrl();
@@ -51,7 +52,7 @@ public class ListDimController extends BaseController
         if (StringUtils.isEmpty(fineReportUrl)){
             url=url+fineReportName+fineReportOp;
         }else {
-            url=url+fineReportUrl+"/"+fineReportName+fineReportOp;
+            url=url+fineReportUrl+"/"+fineReportName+fineReportOp+userId;
         }
         return success(url);
     }

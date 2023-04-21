@@ -1,5 +1,5 @@
 <template>
-  <iframe :src="iframeSrc" style="width: 95vw; height: 90vh;"></iframe>
+  <iframe :src="iframeSrc" style="width: 89vw; height: 91.5vh;"></iframe>
 </template>
 <script>
 import {getUrl} from "@/api/system/dim";
