@@ -22,10 +22,10 @@ import com.ruoyi.common.utils.poi.ExcelUtil;
 import com.ruoyi.common.core.page.TableDataInfo;
 
 /**
- * 报表路径管理Controller
- * 
+ * 报表路径Controller
+ *
  * @author 林淦
- * @date 2023-04-18
+ * @date 2023-05-15
  */
 @RestController
 @RequestMapping("/system/manage")
@@ -35,7 +35,7 @@ public class FineReportManageController extends BaseController
     private IFineReportManageService fineReportManageService;
 
     /**
-     * 查询报表路径管理列表
+     * 查询报表路径列表
      */
     @PreAuthorize("@ss.hasPermi('system:manage:list')")
     @GetMapping("/list")
@@ -47,20 +47,20 @@ public class FineReportManageController extends BaseController
     }
 
     /**
-     * 导出报表路径管理列表
+     * 导出报表路径列表
      */
     @PreAuthorize("@ss.hasPermi('system:manage:export')")
-    @Log(title = "报表路径管理", businessType = BusinessType.EXPORT)
+    @Log(title = "报表路径", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
     public void export(HttpServletResponse response, FineReportManage fineReportManage)
     {
         List<FineReportManage> list = fineReportManageService.selectFineReportManageList(fineReportManage);
         ExcelUtil<FineReportManage> util = new ExcelUtil<FineReportManage>(FineReportManage.class);
-        util.exportExcel(response, list, "报表路径管理数据");
+        util.exportExcel(response, list, "报表路径数据");
     }
 
     /**
-     * 获取报表路径管理详细信息
+     * 获取报表路径详细信息
      */
     @PreAuthorize("@ss.hasPermi('system:manage:query')")
     @GetMapping(value = "/{id}")
@@ -70,10 +70,10 @@ public class FineReportManageController extends BaseController
     }
 
     /**
-     * 新增报表路径管理
+     * 新增报表路径
      */
     @PreAuthorize("@ss.hasPermi('system:manage:add')")
-    @Log(title = "报表路径管理", businessType = BusinessType.INSERT)
+    @Log(title = "报表路径", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody FineReportManage fineReportManage)
     {
@@ -81,10 +81,10 @@ public class FineReportManageController extends BaseController
     }
 
     /**
-     * 修改报表路径管理
+     * 修改报表路径
      */
     @PreAuthorize("@ss.hasPermi('system:manage:edit')")
-    @Log(title = "报表路径管理", businessType = BusinessType.UPDATE)
+    @Log(title = "报表路径", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody FineReportManage fineReportManage)
     {
@@ -92,11 +92,11 @@ public class FineReportManageController extends BaseController
     }
 
     /**
-     * 删除报表路径管理
+     * 删除报表路径
      */
     @PreAuthorize("@ss.hasPermi('system:manage:remove')")
-    @Log(title = "报表路径管理", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
+    @Log(title = "报表路径", businessType = BusinessType.DELETE)
+    @DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {
         return toAjax(fineReportManageService.deleteFineReportManageByIds(ids));

@@ -8,22 +8,22 @@ import com.ruoyi.system.domain.FineReportManage;
 import com.ruoyi.system.service.IFineReportManageService;
 
 /**
- * 报表路径管理Service业务层处理
- * 
+ * 报表路径Service业务层处理
+ *
  * @author 林淦
- * @date 2023-04-18
+ * @date 2023-05-15
  */
 @Service
-public class FineReportManageServiceImpl implements IFineReportManageService 
+public class FineReportManageServiceImpl implements IFineReportManageService
 {
     @Autowired
     private FineReportManageMapper fineReportManageMapper;
 
     /**
-     * 查询报表路径管理
-     * 
-     * @param id 报表路径管理主键
-     * @return 报表路径管理
+     * 查询报表路径
+     *
+     * @param id 报表路径主键
+     * @return 报表路径
      */
     @Override
     public FineReportManage selectFineReportManageById(Long id)
@@ -32,10 +32,10 @@ public class FineReportManageServiceImpl implements IFineReportManageService
     }
 
     /**
-     * 查询报表路径管理列表
-     * 
-     * @param fineReportManage 报表路径管理
-     * @return 报表路径管理
+     * 查询报表路径列表
+     *
+     * @param fineReportManage 报表路径
+     * @return 报表路径
      */
     @Override
     public List<FineReportManage> selectFineReportManageList(FineReportManage fineReportManage)
@@ -44,9 +44,9 @@ public class FineReportManageServiceImpl implements IFineReportManageService
     }
 
     /**
-     * 新增报表路径管理
-     * 
-     * @param fineReportManage 报表路径管理
+     * 新增报表路径
+     *
+     * @param fineReportManage 报表路径
      * @return 结果
      */
     @Override
@@ -56,9 +56,9 @@ public class FineReportManageServiceImpl implements IFineReportManageService
     }
 
     /**
-     * 修改报表路径管理
-     * 
-     * @param fineReportManage 报表路径管理
+     * 修改报表路径
+     *
+     * @param fineReportManage 报表路径
      * @return 结果
      */
     @Override
@@ -68,9 +68,9 @@ public class FineReportManageServiceImpl implements IFineReportManageService
     }
 
     /**
-     * 批量删除报表路径管理
-     * 
-     * @param ids 需要删除的报表路径管理主键
+     * 批量删除报表路径
+     *
+     * @param ids 需要删除的报表路径主键
      * @return 结果
      */
     @Override
@@ -80,9 +80,9 @@ public class FineReportManageServiceImpl implements IFineReportManageService
     }
 
     /**
-     * 删除报表路径管理信息
-     * 
-     * @param id 报表路径管理主键
+     * 删除报表路径信息
+     *
+     * @param id 报表路径主键
      * @return 结果
      */
     @Override

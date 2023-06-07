@@ -8,8 +8,13 @@ export function login(username, password, code, uuid) {
     code,
     uuid
   }
+  const fine ={
+    fine_username : 'root', //帆软账号
+    fine_password : 'lg807050',      //帆软密码
+    encrypted : false
+  }
   request({
-      url: 'http://120.77.76.208/webroot/decision/login/cross/domain?fine_username=root&fine_password=wrvY7quMcv5gS1ywv6ayFA%3D%3D&encrypted=true&validity=-1',
+      url: '/webroot/decision/login/cross/domain?validity=-1&fine_username='+fine.fine_username+'&fine_password='+fine.fine_password+'&encrypted='+fine.encrypted,
       method: 'get',
     })
   return request({

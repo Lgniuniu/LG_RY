@@ -113,9 +113,9 @@ public class SwaggerConfig
         // 用ApiInfoBuilder进行定制
         return new ApiInfoBuilder()
                 // 设置标题
-                .title("大享红木功能文档")
+                .title("阿Bui功能文档")
                 // 描述
-                .description("大享红木基本功能模块")
+                .description("阿Bui基本功能模块")
                 // 作者信息
                 .contact(new Contact(ruoyiConfig.getName(), null, null))
                 // 版本

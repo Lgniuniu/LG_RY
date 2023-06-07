@@ -1,8 +1,8 @@
 {
-  "name": "DSHM",
+  "name": "AB",
   "version": "3.8.5",
-  "description": "大享红木",
-  "author": "大享",
+  "description": "阿Bui",
+  "author": "阿Bui",
   "license": "MIT",
   "scripts": {
     "dev": "vue-cli-service serve",

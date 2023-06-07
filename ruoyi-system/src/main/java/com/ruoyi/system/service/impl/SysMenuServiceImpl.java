@@ -528,4 +528,25 @@ public class SysMenuServiceImpl implements ISysMenuService
         return StringUtils.replaceEach(path, new String[] { Constants.HTTP, Constants.HTTPS, Constants.WWW, "." },
                 new String[] { "", "", "", "/" });
     }
+
+
+    /**
+     * 根据父ID查询系统菜单列表
+     *
+     * @param id 父ID
+     * @return 菜单列表
+     */
+    public List<SysMenu> selectMenuIdListByParenId(long id){
+        return menuMapper.selectMenuIdListByParenId(id);
+    };
+
+    /**
+     * 根据父ID列表查询系统菜单列表
+     *
+     * @param sysMenus 父ID列表
+     * @return 菜单列表
+     */
+    public List<SysMenu> selectMenuListByParenId(List<SysMenu> sysMenus){
+        return menuMapper.selectMenuListByParenId(sysMenus);
+    };
 }

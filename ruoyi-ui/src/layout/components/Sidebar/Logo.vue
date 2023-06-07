@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      title: '大享红木',
+      title: '阿Bui',
       logo: logoImg
     }
   }

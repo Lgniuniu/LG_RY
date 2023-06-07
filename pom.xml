@@ -8,9 +8,9 @@
     <artifactId>ruoyi</artifactId>
     <version>3.8.5</version>
 
-    <name>ruoyi</name>
-    <url>http://www.ruoyi.vip</url>
-    <description>若依管理系统</description>
+    <name>TT</name>
+    <url></url>
+    <description>土土</description>
     <properties>
         <ruoyi.version>3.8.5</ruoyi.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -169,6 +169,18 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.4.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-core</artifactId>
+                <version>3.4.2</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

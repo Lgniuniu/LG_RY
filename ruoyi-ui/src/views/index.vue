@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container home">
+  <!-- <div class="app-container home">
     <el-row :gutter="20">
       <el-col :sm="24" :lg="24">
         <blockquote class="text-warning" style="font-size: 14px">
@@ -57,27 +57,28 @@
     </el-row>
     <el-divider />
     <el-row :gutter="20">
-      
+
     </el-row>
-  </div>
+  </div> -->
+  <iframe src="/webroot/decision/view/report?viewlet=demo/首页.frm&op=view" style="width: 95vw; height: 84.8vh;"></iframe>
 </template>
 
-<script>
-export default {
-  name: "Index",
-  data() {
-    return {
-      // 版本号
-      version: "3.8.5"
-    };
-  },
-  methods: {
-    goTarget(href) {
-      window.open(href, "_blank");
-    }
-  }
-};
-</script>
+<!-- // <script>
+// export default {
+//   name: "Index",
+//   data() {
+//     return {
+//       // 版本号
+//       version: "3.8.5"
+//     };
+//   },
+//   methods: {
+//     goTarget(href) {
+//       window.open(href, "_blank");
+//     }
+//   }
+// };
+// </script>
 
 <style scoped lang="scss">
 .home {
@@ -142,4 +143,4 @@ export default {
   }
 }
 </style>
-
+-->

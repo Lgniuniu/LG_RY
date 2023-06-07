@@ -1,54 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.FineReportManageMapper">
-    
+
     <resultMap type="FineReportManage" id="FineReportManageResult">
         <result property="id"    column="id"    />
         <result property="fineReportName"    column="fine_report_name"    />
         <result property="fineReportUrl"    column="fine_report_url"    />
         <result property="fineReportOp"    column="fine_report_op"    />
+        <result property="fineReportType"    column="fine_report_type"    />
     </resultMap>
 
     <sql id="selectFineReportManageVo">
-        select id, fine_report_name, fine_report_url, fine_report_op from fine_report_manage
+        select id, fine_report_name, fine_report_url, fine_report_op, fine_report_type from fine_report_manage
     </sql>
 
     <select id="selectFineReportManageList" parameterType="FineReportManage" resultMap="FineReportManageResult">
         <include refid="selectFineReportManageVo"/>
-        <where>  
+        <where>
             <if test="fineReportName != null  and fineReportName != ''"> and fine_report_name like concat('%', #{fineReportName}, '%')</if>
             <if test="fineReportUrl != null  and fineReportUrl != ''"> and fine_report_url like concat('%', #{fineReportUrl}, '%')</if>
             <if test="fineReportOp != null  and fineReportOp != ''"> and fine_report_op = #{fineReportOp}</if>
+            <if test="fineReportType != null  and fineReportType != ''"> and fine_report_type = #{fineReportType}</if>
         </where>
     </select>
-    
+
     <select id="selectFineReportManageById" parameterType="Long" resultMap="FineReportManageResult">
         <include refid="selectFineReportManageVo"/>
         where id = #{id}
     </select>
-        
+
     <insert id="insertFineReportManage" parameterType="FineReportManage" useGeneratedKeys="true" keyProperty="id">
         insert into fine_report_manage
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="fineReportName != null">fine_report_name,</if>
-            <if test="fineReportUrl != null">fine_report_url,</if>
-            <if test="fineReportOp != null">fine_report_op,</if>
-         </trim>
+            <if test="fineReportName != null and fineReportName != ''">fine_report_name,</if>
+            <if test="fineReportUrl != null and fineReportUrl != ''">fine_report_url,</if>
+            <if test="fineReportOp != null and fineReportOp != ''">fine_report_op,</if>
+            <if test="fineReportType != null and fineReportType != ''">fine_report_type,</if>
+        </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="fineReportName != null">#{fineReportName},</if>
-            <if test="fineReportUrl != null">#{fineReportUrl},</if>
-            <if test="fineReportOp != null">#{fineReportOp},</if>
-         </trim>
+            <if test="fineReportName != null and fineReportName != ''">#{fineReportName},</if>
+            <if test="fineReportUrl != null and fineReportUrl != ''">#{fineReportUrl},</if>
+            <if test="fineReportOp != null and fineReportOp != ''">#{fineReportOp},</if>
+            <if test="fineReportType != null and fineReportType != ''">#{fineReportType},</if>
+        </trim>
     </insert>
 
     <update id="updateFineReportManage" parameterType="FineReportManage">
         update fine_report_manage
         <trim prefix="SET" suffixOverrides=",">
-            <if test="fineReportName != null">fine_report_name = #{fineReportName},</if>
-            <if test="fineReportUrl != null">fine_report_url = #{fineReportUrl},</if>
-            <if test="fineReportOp != null">fine_report_op = #{fineReportOp},</if>
+            <if test="fineReportName != null and fineReportName != ''">fine_report_name = #{fineReportName},</if>
+            <if test="fineReportUrl != null and fineReportUrl != ''">fine_report_url = #{fineReportUrl},</if>
+            <if test="fineReportOp != null and fineReportOp != ''">fine_report_op = #{fineReportOp},</if>
+            <if test="fineReportType != null and fineReportType != ''">fine_report_type = #{fineReportType},</if>
         </trim>
         where id = #{id}
     </update>
@@ -58,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
     <delete id="deleteFineReportManageByIds" parameterType="String">
-        delete from fine_report_manage where id in 
+        delete from fine_report_manage where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>

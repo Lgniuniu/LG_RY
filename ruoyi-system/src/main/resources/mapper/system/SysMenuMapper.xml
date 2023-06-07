@@ -199,4 +199,19 @@
 	    delete from sys_menu where menu_id = #{menuId}
 	</delete>
 
+	<select id="selectMenuIdListByParenId" parameterType="Long" resultMap="SysMenuResult">
+		select distinct m.menu_id
+		from sys_menu m
+		where m.parent_id = #{id}
+	</select>
+
+	<select id="selectMenuListByParenId" parameterType="List" resultMap="SysMenuResult">
+		select distinct m.menu_name
+		from sys_menu m
+		where m.parent_id in
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+			#{item.menuId}
+		</foreach>
+	</select>
+
 </mapper> 

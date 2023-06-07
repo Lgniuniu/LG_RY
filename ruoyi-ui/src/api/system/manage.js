@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
-// 查询报表路径管理列表
+// 查询报表路径列表
 export function listManage(query) {
   return request({
     url: '/system/manage/list',
@@ -9,7 +9,7 @@ export function listManage(query) {
   })
 }
 
-// 查询报表路径管理详细
+// 查询报表路径详细
 export function getManage(id) {
   return request({
     url: '/system/manage/' + id,
@@ -17,7 +17,7 @@ export function getManage(id) {
   })
 }
 
-// 新增报表路径管理
+// 新增报表路径
 export function addManage(data) {
   return request({
     url: '/system/manage',
@@ -26,7 +26,7 @@ export function addManage(data) {
   })
 }
 
-// 修改报表路径管理
+// 修改报表路径
 export function updateManage(data) {
   return request({
     url: '/system/manage',
@@ -35,7 +35,7 @@ export function updateManage(data) {
   })
 }
 
-// 删除报表路径管理
+// 删除报表路径
 export function delManage(id) {
   return request({
     url: '/system/manage/' + id,

@@ -27,6 +27,16 @@
           />
         </el-select>
       </el-form-item>
+      <el-form-item label="报表类型" prop="fineReportType">
+        <el-select v-model="queryParams.fineReportType" placeholder="请选择报表类型" clearable>
+          <el-option
+            v-for="dict in dict.type.fine_type"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">重置</el-button>
@@ -89,6 +99,11 @@
           <dict-tag :options="dict.type.fine_op" :value="scope.row.fineReportOp"/>
         </template>
       </el-table-column>
+      <el-table-column label="报表类型" align="center" prop="fineReportType">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.fine_type" :value="scope.row.fineReportType"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -117,7 +132,7 @@
       @pagination="getList"
     />
 
-    <!-- 添加或修改报表路径管理对话框 -->
+    <!-- 添加或修改报表路径对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="报表名称" prop="fineReportName">
@@ -130,6 +145,16 @@
           <el-select v-model="form.fineReportOp" placeholder="请选择预览模式">
             <el-option
               v-for="dict in dict.type.fine_op"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            ></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="报表类型" prop="fineReportType">
+          <el-select v-model="form.fineReportType" placeholder="请选择报表类型">
+            <el-option
+              v-for="dict in dict.type.fine_type"
               :key="dict.value"
               :label="dict.label"
               :value="dict.value"
@@ -150,7 +175,7 @@ import { listManage, getManage, delManage, addManage, updateManage } from "@/api
 
 export default {
   name: "Manage",
-  dicts: ['fine_op'],
+  dicts: ['fine_type', 'fine_op'],
   data() {
     return {
       // 遮罩层
@@ -165,7 +190,7 @@ export default {
       showSearch: true,
       // 总条数
       total: 0,
-      // 报表路径管理表格数据
+      // 报表路径表格数据
       manageList: [],
       // 弹出层标题
       title: "",
@@ -177,7 +202,8 @@ export default {
         pageSize: 10,
         fineReportName: null,
         fineReportUrl: null,
-        fineReportOp: null
+        fineReportOp: null,
+        fineReportType: null
       },
       // 表单参数
       form: {},
@@ -191,6 +217,9 @@ export default {
         ],
         fineReportOp: [
           { required: true, message: "预览模式不能为空", trigger: "change" }
+        ],
+        fineReportType: [
+          { required: true, message: "报表类型不能为空", trigger: "change" }
         ]
       }
     };
@@ -199,7 +228,7 @@ export default {
     this.getList();
   },
   methods: {
-    /** 查询报表路径管理列表 */
+    /** 查询报表路径列表 */
     getList() {
       this.loading = true;
       listManage(this.queryParams).then(response => {
@@ -219,7 +248,8 @@ export default {
         id: null,
         fineReportName: null,
         fineReportUrl: null,
-        fineReportOp: null
+        fineReportOp: null,
+        fineReportType: null
       };
       this.resetForm("form");
     },
@@ -243,7 +273,7 @@ export default {
     handleAdd() {
       this.reset();
       this.open = true;
-      this.title = "添加报表路径管理";
+      this.title = "添加报表路径";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -252,7 +282,7 @@ export default {
       getManage(id).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改报表路径管理";
+        this.title = "修改报表路径";
       });
     },
     /** 提交按钮 */
@@ -278,7 +308,7 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除报表路径管理编号为"' + ids + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除报表路径编号为"' + ids + '"的数据项？').then(function() {
         return delManage(ids);
       }).then(() => {
         this.getList();
