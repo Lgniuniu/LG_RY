@@ -37,18 +37,27 @@ public class FineReportController extends BaseController
     @GetMapping("/url")
     public AjaxResult getReportUrl (@RequestParam("id") Long id)
     {
+        //获取登入用户账号信息
         SysUser user = SecurityUtils.getLoginUser().getUser();
+        //把用户ID通过URL传参进去
         String userId = "&fineid="+ Long.toString(user.getUserId());
+        //初始化报表链接
         String url = "/webroot/decision/view/report?viewlet=";
+        //获取报表配置的信息
         FineReportManage fineReportManage = fineReportManageService.selectFineReportManageById(id);
+        //获取信息中的报表URL
         String fineReportUrl = fineReportManage.getFineReportUrl();
+        //获取报表的名称+报表类型    报表名称: demo  报表类型:  .cpt
         String fineReportName = fineReportManage.getFineReportName()+fineReportManage.getFineReportType();
+        //获取报表 浏览类型：填报预览  数据分析预览。。。
         String fineReportOp = "&op="+fineReportManage.getFineReportOp();
+        //判断是否为空
         if (StringUtils.isEmpty(fineReportUrl)){
             url=url+fineReportName+fineReportOp;
         }else {
             url=url+fineReportUrl+"/"+fineReportName+fineReportOp+userId;
         }
+        //返回完整报表路径
         return success(url);
     }
 
